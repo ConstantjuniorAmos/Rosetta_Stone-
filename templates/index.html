@@ -1,1 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <h1>Rosetta Stone</h1>
+        </nav>
+    </header>
+    <main>
+        <h1 id="title">Translation app</h1>
+        <section id="t-body">
+            <header>
+                {%if state ==2 %}
+                <div class="content">
+                    <div class="head">
+                        Error
+                    </div>
+
+                    <div class="body">
+                        {{message}}
+                    </div>
+                    {% endif %}
+            </header>
+            <article id="main">
+
+                <form action="{{ url_for('index') }}" method="post">
+                    <section id="entres">
+                        <div>
+                            <select>
+                                <option value="auto">Détection automatique</option>
+                                <option value="english">Anglais</option>
+                                <option value="french">Français</option>
+                            </select>
+                            <textarea name="corpus" id="" cols="30" rows="10"
+                                placeholder="Écrivez ou collez votre texte ici.">{{text}}</textarea>
+                        </div>
+                        {%if state ==1 %}
+                        <div>
+                            <h2>Traduction</h2>
+                            <article id="retour">
+                                {{response}}
+                            </article>
+
+                        </div>
+                        {% endif %}
+                    </section>
+                    <input type="submit" value="Traduire">
+                </form>
+            </article>
+        </section>
+    </main>
+</body>
+
+</html>
